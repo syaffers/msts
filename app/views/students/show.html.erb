@@ -1,11 +1,18 @@
 <div class="row">
 	<div class="col-xs-12">
-		<p id="notice"><%= notice %></p>
+		<% if !notice.nil? %>
+			<p id="notice" class="alert alert-info"><%= notice %></p>
+		<% end %>
 
 		<%= link_to "&larr; Back to All Students".html_safe, students_path %>
 
 		<h2>
 		  <%= @student.name %>
+		  <% if @student.member %>
+		  	<span class="glyphicon glyphicon-user glyphicon-member"></span>
+		  <% else %>
+		  	<span class="glyphicon glyphicon-user"></span>
+		  <% end %>
 		</h2>
 
 		<p>

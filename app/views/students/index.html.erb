@@ -9,6 +9,7 @@
           <th>Name</th>
           <th>Email</th>
           <th>Contact number</th>
+          <th>Member?</th>
           <th></th>
           <th></th>
         </tr>
@@ -21,6 +22,13 @@
             <td><%= student.name %></td>
             <td><%= student.email %></td>
             <td><%= student.contact_number %></td>
+            <td>
+              <% if student.member %>
+                <span class="glyphicon glyphicon-user glyphicon-member"></span>
+              <% else %>
+                <span class="glyphicon glyphicon-user"></span>
+              <% end %>
+            </td>
             <td><%= link_to 'Details', student %></td>
             <td><%= link_to 'Edit Details', edit_student_path(student) %></td>
             <!--<td><%= link_to 'Edit', edit_student_path(student) %></td>

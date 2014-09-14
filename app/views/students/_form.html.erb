@@ -1,7 +1,7 @@
 <%= form_for(@student) do |f| %>
   <% if @student.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h3>
+    <div id="error_explanation" class="alert alert-danger">
+      <p><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</p>
 
       <ul>
       <% @student.errors.full_messages.each do |message| %>
@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="col-xs-12 col-sm-6 col-md-2">
       <div class="form-group">
         <%= f.label :student_id, "Student ID" %>
         <%= f.text_field :student_id, class: "form-control" %>
@@ -34,6 +34,12 @@
       <div class="form-group">
         <%= f.label :contact_number %>
         <%= f.text_field :contact_number, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-1">
+      <div class="form-group">
+        <%= f.label :member %>
+        <%= f.check_box :member, class: "form-control" %>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <%= form_for(@ticket) do |f| %>
   <% if @ticket.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+    <div id="error_explanation" class="alert alert-danger">
+      <p><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</p>
 
       <ul>
       <% @ticket.errors.full_messages.each do |message| %>

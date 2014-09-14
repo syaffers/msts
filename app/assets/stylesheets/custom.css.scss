@@ -1,7 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-#notice {
-	@extend .alert;
-	@extend .alert-info;
+.glyphicon-member {
+	color: gold;
 }
