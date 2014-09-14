@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-xs-12">
 		<p id="notice"><%= notice %></p>
-		<p><%= link_to 'Back to All Tickets', tickets_path %></p>
+		<p><%= link_to '&larr; Back to All Tickets'.html_safe, tickets_path %></p>
 		<h2>
 			Details for Ticket ID 
 		  	<%= @ticket.serial_number %>

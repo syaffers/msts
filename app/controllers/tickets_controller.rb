@@ -14,7 +14,11 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-    @ticket = Ticket.new
+    if(params[:sn].nil?)
+      @ticket = Ticket.new
+    else
+      @ticket = Ticket.new(:serial_number => params[:sn])
+    end
     @students_array = Student.all
   end
 
@@ -41,6 +45,19 @@ class TicketsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def qr
+    @ticket = Ticket.find_by("serial_number = ?", params[:c])
+
+    respond_to do |format|
+      if @ticket.nil?
+        format.html { redirect_to(:controller => "tickets", :action => "new", :sn => params[:c])  }
+      else
+        format.html { redirect_to @ticket, notice: 'Ticket is already registered' }
+        format.json { render :show, location: @ticket }
+      end
     end
   end
 
