@@ -1,1 +1,7 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
+
+#notice {
+	@extend .alert;
+	@extend .alert-info;
+}

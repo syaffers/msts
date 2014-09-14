@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :set_ticket, only: [:show, :destroy]
 
   # GET /tickets
   # GET /tickets.json
@@ -15,10 +15,7 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     @ticket = Ticket.new
-  end
-
-  # GET /tickets/1/edit
-  def edit
+    @students_array = Student.all
   end
 
   # POST /tickets
@@ -32,20 +29,6 @@ class TicketsController < ApplicationController
         format.json { render :show, status: :created, location: @ticket }
       else
         format.html { render :new }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /tickets/1
-  # PATCH/PUT /tickets/1.json
-  def update
-    respond_to do |format|
-      if @ticket.update(ticket_params)
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ticket }
-      else
-        format.html { render :edit }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end

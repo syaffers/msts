@@ -1,14 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-xs-12">
+		<p id="notice"><%= notice %></p>
+		<p><%= link_to 'Back to All Tickets', tickets_path %></p>
+		<h2>
+			Details for Ticket ID 
+		  	<%= @ticket.serial_number %>
+		</h2>
 
-<p>
-  <strong>Serial number:</strong>
-  <%= @ticket.serial_number %>
-</p>
-
-<p>
-  <strong>Student ID:</strong>
-  <%= @ticket.student.id %>
-</p>
-
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+		<p>
+		  <strong>Buyer ID:</strong>
+		  <%= @ticket.student.student_id %>
+		</p>
+		<p>
+		  <strong>Buyer Name:</strong>
+		  <%= @ticket.student.name %>
+		</p>
+		<p>
+		  <strong>Buyer Contact:</strong>
+		  <%= @ticket.student.contact_number %> | 
+		  <%= @ticket.student.email %>
+		</p>
+	</div>
+</div>
