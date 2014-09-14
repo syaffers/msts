@@ -13,7 +13,7 @@
     <% @tickets.each do |ticket| %>
       <tr>
         <td><%= ticket.serial_number %></td>
-        <td><%= ticket.student.student_id %></td>
+        <td><%= link_to ticket.student.student_id, ticket.student %></td>
         <td><%= link_to 'Show', ticket %></td>
         <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
         <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>

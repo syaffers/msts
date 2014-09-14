@@ -1,24 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-xs-12">
+		<p>
+			<%= notice %>
+		</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @student.name %>
-</p>
+		<h2>
+		  <%= @student.name %>
+		</h2>
 
-<p>
-  <strong>Email:</strong>
-  <%= @student.email %>
-</p>
+		<p>
+		  <strong>Email:</strong>
+		  <%= @student.email %>
+		</p>
 
-<p>
-  <strong>Contact number:</strong>
-  <%= @student.contact_number %>
-</p>
+		<p>
+		  <strong>Contact number:</strong>
+		  <%= @student.contact_number %>
+		</p>
 
-<p>
-  <strong>Student:</strong>
-  <%= @student.student_id %>
-</p>
+		<p>
+		  <strong>Student ID:</strong>
+		  <%= @student.student_id %>
+		</p>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+		<h3>Tickets bought:</h3>
+		<ul>
+		<% @student.tickets.each do |t| %>
+			<li>
+				<%= t.serial_number %> on 
+				<%= t.created_at.to_date %>
+			</li>
+		<% end %>
+		</ul>
+	</div>
+</div>
