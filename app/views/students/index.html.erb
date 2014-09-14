@@ -10,6 +10,7 @@
           <th>Email</th>
           <th>Contact number</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
 
@@ -21,6 +22,7 @@
             <td><%= student.email %></td>
             <td><%= student.contact_number %></td>
             <td><%= link_to 'Details', student %></td>
+            <td><%= link_to 'Edit Details', edit_student_path(student) %></td>
             <!--<td><%= link_to 'Edit', edit_student_path(student) %></td>
             <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
           </tr>
