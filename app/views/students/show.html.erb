@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col-xs-12">
-		<p id="notice">
-			<%= notice %>
-		</p>
+		<p id="notice"><%= notice %></p>
+
+		<%= link_to "&larr; Back to All Students".html_safe, students_path %>
 
 		<h2>
 		  <%= @student.name %>
@@ -24,12 +24,16 @@
 		</p>
 
 		<h3>Tickets bought:</h3>
-		<ul>
-		<% @student.tickets.each do |t| %>
-			<li>
-				<%= t.serial_number %> on 
-				<%= t.created_at.to_date %>
-			</li>
+		<% if @student.tickets.empty? %>
+			<p>No tickets have been bought</p>
+		<% else %>
+			<ul>
+			<% @student.tickets.each do |t| %>
+				<li>
+					<%= t.serial_number %> on 
+					<%= t.created_at.to_date %>
+				</li>
+			<% end %>
 		<% end %>
 		</ul>
 	</div>
