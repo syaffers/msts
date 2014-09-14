@@ -1,6 +1,8 @@
 <div class="row">
 	<div class="col-xs-12">
-		<p id="notice"><%= notice %></p>
+		<% if !notice.nil? %>
+			<p id="notice" class="alert alert-info"><%= notice %></p>
+		<% end %>
 		<p><%= link_to '&larr; Back to All Tickets'.html_safe, tickets_path %></p>
 		<h2>
 			Details for Ticket ID 

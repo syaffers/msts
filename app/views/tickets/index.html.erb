@@ -6,7 +6,7 @@
       <thead>
         <tr>
           <th>Serial number</th>
-          <th>Purchaser Student ID</th>
+          <th>Buyer</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -15,7 +15,7 @@
         <% @tickets.each do |ticket| %>
           <tr>
             <td><%= ticket.serial_number %></td>
-            <td><%= link_to ticket.student.student_id, ticket.student %></td>
+            <td><%= link_to "#{ticket.student.name} (#{ticket.student.student_id})", ticket.student %></td>
             <td><%= link_to 'Details', ticket %></td>
             <!--<td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
             <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->

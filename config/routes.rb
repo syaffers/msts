@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :students do    
+    get :autocomplete_student_student_id, :on => :collection
+  end
+
   resources :tickets
 
   resources :students
