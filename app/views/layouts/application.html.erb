@@ -11,16 +11,16 @@
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
+				<%= link_to "MSTS", root_path, class: "navbar-brand" %>
 			</div>
-			<%= link_to "MSTS", root_path, class: "navbar-brand" %>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse" id="head-navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><%= link_to "Students List", students_path %></li>
 					<li><%= link_to "Tickets List", tickets_path %></li>
@@ -28,8 +28,16 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
-	<div class="container">
+	<div class="container" id="main-container">
 		<%= yield %>
 	</div>
+	<hr>
+	<footer class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<p>&copy; 2014 || Lovingly coded by <%= link_to "Syafiq Kamarul Azman", "http://github.com/syaffers" %></p>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>

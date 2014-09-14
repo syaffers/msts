@@ -7,41 +7,41 @@
 		<%= link_to "&larr; Back to All Students".html_safe, students_path %>
 
 		<h2>
-		  <%= @student.name %>
-		  <% if @student.member %>
-		  	<span class="glyphicon glyphicon-user glyphicon-member"></span>
-		  <% else %>
-		  	<span class="glyphicon glyphicon-user"></span>
-		  <% end %>
+			<% if @student.member %>
+				<span class="glyphicon glyphicon-user glyphicon-member"></span>
+			<% else %>
+				<span class="glyphicon glyphicon-user"></span>
+			<% end %>
+			<%= @student.name %>
 		</h2>
 
 		<p>
-		  <strong>Email:</strong>
-		  <%= @student.email %>
+			<strong>Email:</strong>
+			<%= @student.email %>
 		</p>
 
 		<p>
-		  <strong>Contact number:</strong>
-		  <%= @student.contact_number %>
+			<strong>Contact number:</strong>
+			<%= @student.contact_number %>
 		</p>
 
 		<p>
-		  <strong>Student ID:</strong>
-		  <%= @student.student_id %>
+			<strong>Student ID:</strong>
+			<%= @student.student_id %>
 		</p>
 
 		<h3>Tickets bought:</h3>
 		<% if @student.tickets.empty? %>
 			<p>No tickets have been bought</p>
 		<% else %>
-			<ul>
+		<ul>
 			<% @student.tickets.each do |t| %>
-				<li>
-					<%= t.serial_number %> on 
-					<%= t.created_at.to_date %>
-				</li>
+			<li>
+				<%= link_to t.serial_number, t %> on 
+				<%= t.created_at.to_date %>
+			</li>
 			<% end %>
-		<% end %>
+			<% end %>
 		</ul>
 	</div>
 </div>
