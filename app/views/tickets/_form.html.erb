@@ -14,15 +14,15 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4">
       <div class="form-group">
-        <%= f.label :serial_number, "Ticket Serial Number" %>
-        <%= f.text_field :serial_number, class: "form-control" %>
+        <%= f.label :student_id, "Student ID" %>
+        <%= f.autocomplete_field :student_id, autocomplete_student_student_id_students_path, :id_element => '#s_id_field', class: "form-control" %>
+        <%= f.hidden_field :student_id, id: "s_id_field" %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="form-group">
-        <%= f.label :student_id, "Student ID" %>
-        <%= f.autocomplete_field :student_id, autocomplete_student_student_id_students_path, :id_element => '#s_id_field', class: "form-control" %>
-        <%= f.hidden_field :student_id, id: "s_id_field" %>
+        <%= f.label :serial_number, "Ticket Serial Number" %>
+        <%= f.text_field :serial_number, class: "form-control" %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">

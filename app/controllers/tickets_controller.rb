@@ -58,7 +58,7 @@ class TicketsController < ApplicationController
       if @event.nil?
         format.html { redirect_to events_path, notice: "Event doesn't exist" }
       elsif @ticket.nil?
-        format.html { redirect_to(:controller => "tickets", :action => "new", :sn => params[:n], :ec => @event.id, :ecs => @event.code)  }
+        format.html { redirect_to(:controller => "tickets", :action => "new", :sn => n, :ec => @event.id, :ecs => @event.code)  }
       else
         format.html { redirect_to @ticket, notice: 'Ticket is already registered' }
         format.json { render :show, location: @ticket }
