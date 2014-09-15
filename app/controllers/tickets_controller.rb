@@ -49,8 +49,10 @@ class TicketsController < ApplicationController
   end
 
   def qr
-    @event = Event.find_by("code = ?", params[:c])
-    @ticket = Ticket.find_by("serial_number = ?", params[:n])
+    c = params[:c].scan(/[A-Z]+|\d+/)[0]
+    n = params[:c].scan(/[A-Z]+|\d+/)[1]
+    @event = Event.find_by("code = ?", c)
+    @ticket = Ticket.find_by("serial_number = ?", n)
 
     respond_to do |format|
       if @event.nil?
