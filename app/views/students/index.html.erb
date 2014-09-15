@@ -10,7 +10,7 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-4">
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <%= form_tag(students_path, :method => "get", id: "search-form") do %>
           <div class="input-group">
             <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search name, id, email, phone" %>
