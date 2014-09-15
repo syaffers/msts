@@ -14,10 +14,10 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-    if(params[:sn].nil?)
+    if(params[:sn].nil? && params[:ec].nil?)
       @ticket = Ticket.new
     else
-      @ticket = Ticket.new(:serial_number => params[:sn])
+      @ticket = Ticket.new(:serial_number => params[:sn], :event_id => params[:ec] )
     end
     @students_array = Student.all
   end
@@ -49,11 +49,14 @@ class TicketsController < ApplicationController
   end
 
   def qr
-    @ticket = Ticket.find_by("serial_number = ?", params[:c])
+    @event = Event.find_by("code = ?", params[:c])
+    @ticket = Ticket.find_by("serial_number = ?", params[:n])
 
     respond_to do |format|
-      if @ticket.nil?
-        format.html { redirect_to(:controller => "tickets", :action => "new", :sn => params[:c])  }
+      if @event.nil?
+        format.html { redirect_to events_path, notice: "Event doesn't exist" }
+      elsif @ticket.nil?
+        format.html { redirect_to(:controller => "tickets", :action => "new", :sn => params[:n], :ec => @event.id, :ecs => @event.code)  }
       else
         format.html { redirect_to @ticket, notice: 'Ticket is already registered' }
         format.json { render :show, location: @ticket }
