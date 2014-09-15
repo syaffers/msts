@@ -5,9 +5,24 @@
         <h2>All Students</h2>
       </div>
       <div class="col-xs-6">
-        <%= link_to 'Add Student', new_student_path, class: "btn btn-success pull-right btn-new" %>
+        <%= link_to 'Add Student', new_student_path, class: "btn btn-success pull-right header-component" %>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-xs-4">
+        <%= form_tag(students_path, :method => "get", id: "search-form") do %>
+          <div class="input-group">
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search name, id, email, phone" %>
+            <span class="input-group-btn">
+              <%= button_tag "Search", :name => nil, class: 'btn btn-default' %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <br>
 
     <table class="table">
       <thead>

@@ -12,4 +12,8 @@ class Student < ActiveRecord::Base
     	"#{self.name} (#{self.student_id})"
   	end
 
+  	def self.search(search)
+  		search_condition = "%" + search + "%"
+  		where('name LIKE ? OR student_id LIKE ? OR contact_number LIKE ? OR email LIKE ?', search_condition, search_condition, search_condition, search_condition)
+  	end
 end
