@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-  autocomplete :student, :student_id, :extra_data => [:name], :display_value => :display_ac
+  autocomplete :student, :student_id, :extra_data => [:name], :display_value => :display_ac, :full => true
 
   # GET /students
   # GET /students.json
