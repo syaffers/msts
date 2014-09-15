@@ -3,8 +3,8 @@ class Event < ActiveRecord::Base
 
 	validates_presence_of :name
 	validates :code, presence: true, length: { maximum: 3 }
-	validates :member_price, presence: true, numericality: true
-	validates :non_member_price, presence: true, numericality: true
+	validates :member_price, presence: true, numericality: { :greater_than => 0 }
+	validates :non_member_price, presence: true, numericality: { :greater_than => 0 }
 
 	def display_ac
     	"#{self.name} (#{self.code})"

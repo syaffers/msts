@@ -15,11 +15,11 @@
 		</p>
 		<p>
 		  <strong>Member Price:</strong>
-		  RM <%= @event.member_price %>
+		  RM <%= number_with_precision(@event.member_price, :precision => 2) %>
 		</p>
 		<p>
 		  <strong>Non-member Price:</strong>
-		  RM <%= @event.non_member_price %>
+		  RM <%= number_with_precision(@event.non_member_price, :precision => 2) %>
 		</p>
 	</div>
 </div>

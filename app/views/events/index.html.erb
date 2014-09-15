@@ -30,8 +30,8 @@
           <tr>
             <td><%= event.name %></td>
             <td><%= event.code %></td>
-            <td>RM <%= event.member_price %></td>
-            <td>RM <%= event.non_member_price %></td>
+            <td>RM <%= number_with_precision(event.member_price, :precision => 2) %></td>
+            <td>RM <%= number_with_precision(event.non_member_price, :precision => 2) %></td>
             <td><%= link_to 'View Details', event %></td>
             <td><%= link_to 'Edit Details', edit_event_path(event) %></td>
             <td><%= link_to 'Delete Event', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
