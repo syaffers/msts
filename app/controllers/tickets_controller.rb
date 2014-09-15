@@ -52,7 +52,9 @@ class TicketsController < ApplicationController
     c = params[:c].scan(/[A-Z]+|\d+/)[0]
     n = params[:c].scan(/[A-Z]+|\d+/)[1]
     @event = Event.find_by("code = ?", c)
-    @ticket = Ticket.find_by("serial_number = ?", n)
+    if @event
+      @ticket = Ticket.find_by("serial_number = ? AND event_id = ?", n, @event.id)
+    end
 
     respond_to do |format|
       if @event.nil?

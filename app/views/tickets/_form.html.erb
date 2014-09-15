@@ -22,17 +22,18 @@
     <div class="col-xs-12 col-sm-4">
       <div class="form-group">
         <%= f.label :serial_number, "Ticket Serial Number" %>
-        <% if :serial_number.nil? %>
+        <% if params[:sn].nil? %>
           <%= f.text_field :serial_number, class: "form-control" %>
         <% else %>
           <%= f.text_field :serial_number, :disabled => true, class: "form-control" %>
+          <%= f.hidden_field :serial_number, value: params[:sn] %>
         <% end %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="form-group">
         <%= f.label :event_id, "Event Code" %>
-        <% if :event_id.nil? %>
+        <% if params[:ec].nil? %>
           <%= f.autocomplete_field :event_id, autocomplete_event_code_events_path, :id_element => '#e_id_field', class: "form-control" %>
           <%= f.hidden_field :event_id, id: "e_id_field" %>
         <% else %>
@@ -43,6 +44,6 @@
     </div>
   </div>
   <div class="actions">
-    <%= f.submit class: "btn btn-small btn-primary" %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>

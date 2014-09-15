@@ -5,8 +5,8 @@
 		<% end %>
 		<p><%= link_to '&larr; Back to All Tickets'.html_safe, tickets_path %></p>
 		<h2>
-			Details for Ticket ID 
-		  	<%= @ticket.serial_number %>
+			Details for Ticket
+		  	<%= "#{@ticket.event.code}#{@ticket.serial_number}" %>
 		</h2>
 
 		<p>
