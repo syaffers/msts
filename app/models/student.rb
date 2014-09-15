@@ -11,4 +11,5 @@ class Student < ActiveRecord::Base
 	def display_ac
     	"#{self.name} (#{self.student_id})"
   	end
+
 end
