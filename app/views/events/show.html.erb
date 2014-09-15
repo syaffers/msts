@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-xs-12">
+		<% if !notice.nil? %>
+			<p id="notice" class="alert alert-info"><%= notice %></p>
+		<% end %>
+		<p><%= link_to '&larr; Back to All Events'.html_safe, events_path %></p>
+		<h2>
+			Details for 
+		  	<%= @event.name %>
+		</h2>
+
+		<p>
+		  <strong>Event Code:</strong>
+		  <%= @event.code %>
+		</p>
+		<p>
+		  <strong>Member Price:</strong>
+		  RM <%= @event.member_price %>
+		</p>
+		<p>
+		  <strong>Non-member Price:</strong>
+		  RM <%= @event.non_member_price %>
+		</p>
+	</div>
+</div>

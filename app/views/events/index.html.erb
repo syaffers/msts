@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2>All Events</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Event Code</th>
+          <th>Member Price</th>
+          <th>Non-member Price</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= event.name %></td>
+            <td><%= event.code %></td>
+            <td>RM <%= event.member_price %></td>
+            <td>RM <%= event.non_member_price %></td>
+            <td><%= link_to 'View Details', event %></td>
+            <td><%= link_to 'Edit Details', edit_event_path(event) %></td>
+            <td><%= link_to 'Delete Event', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'New Event', new_event_path %>
+
+  </div>
+</div>

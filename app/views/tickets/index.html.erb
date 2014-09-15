@@ -6,7 +6,8 @@
       <thead>
         <tr>
           <th>Serial number</th>
-          <th>Buyer</th>
+          <th>Buyer Details</th>
+          <th>Event Name</th>
           <th></th>
         </tr>
       </thead>
@@ -14,8 +15,9 @@
       <tbody>
         <% @tickets.each do |ticket| %>
           <tr>
-            <td><%= ticket.serial_number %></td>
+            <td><%= "#{ticket.event.code}#{ticket.serial_number}" %></td>
             <td><%= link_to "#{ticket.student.name} (#{ticket.student.student_id})", ticket.student %></td>
+            <td><%= link_to ticket.event.name, ticket.event %></td>
             <td><%= link_to 'View Details', ticket %></td>
             <!--<td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
             <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->

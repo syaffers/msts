@@ -11,9 +11,15 @@ Rails.application.routes.draw do
     get :autocomplete_student_student_id, :on => :collection
   end
 
+  resources :events do    
+    get :autocomplete_event_code, :on => :collection
+  end
+
   resources :tickets
 
   resources :students
+
+  resources :events
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -34,14 +34,14 @@
 		<% if @student.tickets.empty? %>
 			<p>No tickets have been bought</p>
 		<% else %>
-		<ul>
-			<% @student.tickets.each do |t| %>
-			<li>
-				<%= link_to t.serial_number, t %> on 
-				<%= t.created_at.to_date %>
-			</li>
-			<% end %>
-			<% end %>
-		</ul>
+			<ul>
+				<% @student.tickets.each do |t| %>
+				<li>
+					<%= link_to "#{t.event.code}#{t.serial_number}", t %> on 
+					<%= t.created_at.to_date %>
+				</li>
+				<% end %>
+			</ul>
+		<% end %>
 	</div>
 </div>

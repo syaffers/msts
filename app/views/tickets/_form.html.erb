@@ -12,17 +12,24 @@
   <% end %>
 
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-4">
       <div class="form-group">
         <%= f.label :serial_number, "Ticket Serial Number" %>
         <%= f.text_field :serial_number, class: "form-control" %>
       </div>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-4">
       <div class="form-group">
         <%= f.label :student_id, "Student ID" %>
-        <%= f.autocomplete_field :student_id, autocomplete_student_student_id_students_path, :id_element => '#h_id_field', class: "form-control" %>
-        <%= f.hidden_field :student_id, id: "h_id_field" %>
+        <%= f.autocomplete_field :student_id, autocomplete_student_student_id_students_path, :id_element => '#s_id_field', class: "form-control" %>
+        <%= f.hidden_field :student_id, id: "s_id_field" %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="form-group">
+        <%= f.label :event_id, "Event Code" %>
+        <%= f.autocomplete_field :event_id, autocomplete_event_code_events_path, :id_element => '#e_id_field', class: "form-control" %>
+        <%= f.hidden_field :event_id, id: "e_id_field" %>
       </div>
     </div>
   </div>
