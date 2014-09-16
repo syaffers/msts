@@ -17,6 +17,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# Use jquery turbolinks for jquery UI refresh problems
+gem 'jquery-turbolinks'
 # Use jquery UI
 gem 'jquery-ui-rails'
 # Autocomplete gem
