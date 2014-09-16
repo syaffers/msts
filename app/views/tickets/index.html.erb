@@ -1,46 +1,48 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="row">
-      <div class="col-xs-6">
-        <h2>All Tickets</h2>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row">
+        <div class="col-xs-6">
+          <h2>All Tickets</h2>
+        </div>
+        <div class="col-xs-6">
+          <%= link_to 'New Ticket', new_ticket_path, class: "btn btn-success pull-right header-component" %>
+        </div>
       </div>
-      <div class="col-xs-6">
-        <%= link_to 'New Ticket', new_ticket_path, class: "btn btn-success pull-right header-component" %>
-      </div>
-    </div>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Serial number</th>
-          <th>Buyer Details</th>
-          <th>Event Name</th>
-          <th>Member Ticket?</th>
-          <th></th>
-        </tr>
-      </thead>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Serial number</th>
+            <th>Buyer Details</th>
+            <th>Event Name</th>
+            <th>Member Ticket?</th>
+            <th></th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <% @tickets.each do |ticket| %>
-        <tr>
-          <td><%= "#{ticket.event.code}#{ticket.serial_number}" %></td>
-          <td><%= link_to "#{ticket.student.name} (#{ticket.student.student_id})", ticket.student %></td>
-          <td><%= link_to ticket.event.name, ticket.event %></td>
-          <td>
+        <tbody>
+          <% @tickets.each do |ticket| %>
+          <% if ticket.attendance %>
+           <tr class="attending">
+          <% else %>
+          <tr>
+          <% end %>
+            <td><%= "#{ticket.event.code}#{ticket.serial_number}" %></td>
+            <td><%= link_to "#{ticket.student.name} (#{ticket.student.student_id})", ticket.student %></td>
+            <td><%= link_to ticket.event.name, ticket.event %></td>
+            <td>
             <% if ticket.member %>
-            <span class="glyphicon glyphicon-credit-card glyphicon-member"></span>
+              <span class="glyphicon glyphicon-credit-card glyphicon-member"></span>
             <% else %>
-            <span class="glyphicon glyphicon-credit-card"></span>
+              <span class="glyphicon glyphicon-credit-card"></span>
             <% end %>
-          </td>
-          <td><%= link_to 'View Details', ticket %></td>
+            </td>
+            <td><%= link_to 'View Details', ticket %></td>
             <!--<td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
             <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
           </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-      <br>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
+</div>

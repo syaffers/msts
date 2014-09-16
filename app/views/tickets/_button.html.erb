@@ -1,0 +1,5 @@
+<%= form_for(@ticket, :remote => true, :url => { :action => :update }) do |f| %>
+<%= f.label :attendance, @ticket.attendance ? "Attendance Status: In" : "Attendance Status: Out" ,style: "display: block;" %>
+<%= f.hidden_field :attendance, value: !@ticket.attendance %>
+<%= @ticket.attendance ? (f.submit "Check Out", class: "btn btn-large btn-warning") : (f.submit "Check In", class: "btn btn-large btn-primary") %>
+<% end %>
