@@ -17,3 +17,30 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).ready( function() {
+	$("#ticket_event_id").bind('railsAutocomplete.select', function(event, data) {
+		/* Do something here */
+		$("#member_price-display").text(data.item.member_price);
+		$("#non_member_price-display").text(data.item.non_member_price);
+		if($("#ticket_member").is(":checked")) {
+			$("#member_price-display").show()
+			$("#non_member_price-display").hide();
+		}
+		else {
+			$("#member_price-display").hide()
+			$("#non_member_price-display").show();
+		}
+	});
+
+	$("#ticket_member").change( function() {
+		if($(this).is(":checked")) {
+			$("#member_price-display").show()
+			$("#non_member_price-display").hide();
+		}
+		else {
+			$("#member_price-display").hide()
+			$("#non_member_price-display").show();
+		}
+	});
+})

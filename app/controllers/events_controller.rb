@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  autocomplete :event, :code, :extra_data => [:name], :display_value => :display_ac, :full => true
+  autocomplete :event, :code, :extra_data => [:name, :member_price, :non_member_price], :display_value => :display_ac, :full => true
 
   # GET /events
   # GET /events.json
