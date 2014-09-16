@@ -1,34 +1,40 @@
 <div class="row">
 	<div class="col-xs-12">
 		<% if !notice.nil? %>
-			<p id="notice" class="alert alert-info"><%= notice %></p>
+		<p id="notice" class="alert alert-info"><%= notice %></p>
 		<% end %>
-		<p><%= link_to '&larr; Back to All Tickets'.html_safe, tickets_path %></p>
-		<h2>
-			Details for Ticket
-		  	<%= "#{@ticket.event.code}#{@ticket.serial_number}" %>
-		</h2>
+		<div class="row">
+			<div class="col-xs-6">
+				<h2>
+					Details for Ticket
+					<%= "#{@ticket.event.code}#{@ticket.serial_number}" %>
+				</h2>
+			</div>
+			<div class="col-xs-6">
+				<%= link_to '&larr; Back to All Tickets'.html_safe, tickets_path, class: 'btn btn-warning pull-right header-component' %>
+			</div>
+		</div>
 
 		<p>
-		  <strong>Buyer ID:</strong>
-		  <%= @ticket.student.student_id %>
+			<strong>Buyer ID:</strong>
+			<%= @ticket.student.student_id %>
 		</p>
 		<p>
-		  <strong>Buyer Name:</strong>
-		  <%= @ticket.student.name %>
+			<strong>Buyer Name:</strong>
+			<%= @ticket.student.name %>
 		</p>
 		<p>
-		  <strong>Event Name:</strong>
-		  <%= @ticket.event.name %>
+			<strong>Event Name:</strong>
+			<%= @ticket.event.name %>
 		</p>
 		<p>
-		  <strong>Event Code:</strong>
-		  <%= @ticket.event.code %>
+			<strong>Event Code:</strong>
+			<%= @ticket.event.code %>
 		</p>
 		<p>
-		  <strong>Buyer Contact:</strong>
-		  <%= @ticket.student.contact_number %> | 
-		  <%= @ticket.student.email %>
+			<strong>Buyer Contact:</strong>
+			<%= @ticket.student.contact_number %> | 
+			<%= @ticket.student.email %>
 		</p>
 	</div>
 </div>

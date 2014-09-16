@@ -3,17 +3,21 @@
 		<% if !notice.nil? %>
 			<p id="notice" class="alert alert-info"><%= notice %></p>
 		<% end %>
-
-		<%= link_to "&larr; Back to All Students".html_safe, students_path %>
-
-		<h2>
-			<% if @student.member %>
-				<span class="glyphicon glyphicon-user glyphicon-member"></span>
-			<% else %>
-				<span class="glyphicon glyphicon-user"></span>
-			<% end %>
-			<%= @student.name %>
-		</h2>
+		<div class="row">
+			<div class="col-xs-6">
+				<h2>
+					<% if @student.member %>
+						<span class="glyphicon glyphicon-user glyphicon-member"></span>
+					<% else %>
+						<span class="glyphicon glyphicon-user"></span>
+					<% end %>
+					<%= @student.name %>
+				</h2>
+			</div>
+			<div class="col-xs-6">
+				<%= link_to '&larr; Back to All Students'.html_safe, students_path, class: 'btn btn-warning pull-right header-component' %>
+			</div>
+		</div>
 
 		<p>
 			<strong>Email:</strong>
