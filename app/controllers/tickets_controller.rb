@@ -17,6 +17,7 @@ class TicketsController < ApplicationController
     if(params[:sn].nil? && params[:ec].nil?)
       @ticket = Ticket.new
     else
+      @event = Event.find(params[:ec])
       @ticket = Ticket.new(:serial_number => params[:sn], :event_id => params[:ec] )
     end
     @students_array = Student.all
@@ -51,19 +52,19 @@ class TicketsController < ApplicationController
   def qr
     c = params[:c].scan(/[A-Z]+|\d+/)[0]
     n = params[:c].scan(/[A-Z]+|\d+/)[1]
-    @event = Event.find_by("code = ?", c)
-    if @event
-      @ticket = Ticket.find_by("serial_number = ? AND event_id = ?", n, @event.id)
+    event = Event.find_by("code = ?", c)
+    if event
+      ticket = Ticket.find_by("serial_number = ? AND event_id = ?", n, event.id)
     end
 
     respond_to do |format|
-      if @event.nil?
+      if event.nil?
         format.html { redirect_to events_path, notice: "Event doesn't exist" }
-      elsif @ticket.nil?
-        format.html { redirect_to(:controller => "tickets", :action => "new", :sn => n, :ec => @event.id, :ecs => @event.code)  }
+      elsif ticket.nil?
+        format.html { redirect_to(:controller => "tickets", :action => "new", :sn => n, :ec => event)  }
       else
-        format.html { redirect_to @ticket, notice: 'Ticket is already registered' }
-        format.json { render :show, location: @ticket }
+        format.html { redirect_to ticket, notice: 'Ticket is already registered' }
+        format.json { render :show, location: ticket }
       end
     end
   end

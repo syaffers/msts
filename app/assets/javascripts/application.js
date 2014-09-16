@@ -19,10 +19,12 @@
 //= require_tree .
 
 $(document).ready( function() {
+	$("#non_member_price-display").hide();
+
 	$("#ticket_event_id").bind('railsAutocomplete.select', function(event, data) {
 		/* Do something here */
-		$("#member_price-display").text(data.item.member_price);
-		$("#non_member_price-display").text(data.item.non_member_price);
+		$("#member_price-display").text(parseFloat(data.item.member_price).toFixed(2));
+		$("#non_member_price-display").text(parseFloat(data.item.non_member_price).toFixed(2));
 		if($("#ticket_member").is(":checked")) {
 			$("#member_price-display").show()
 			$("#non_member_price-display").hide();

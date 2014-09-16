@@ -15,7 +15,15 @@
 			<div class="col-xs-12 col-sm-offset-8 col-sm-4">
 				<h3 class="pull-right">
 					Total Payable: 
-					<strong>RM <span id="member_price-display"></span><span id="non_member_price-display"></strong>
+					<strong>
+						RM 
+						<span id="member_price-display">
+							<%= !@event.nil? ?  number_with_precision(@event.member_price, :precision => 2) : "0.00" %>
+						</span>
+						<span id="non_member_price-display">
+							<%= !@event.nil? ?  number_with_precision(@event.non_member_price, :precision => 2) : "" %>
+						</span>
+					</strong>
 				</h3>
 			</div>
 		</div>
