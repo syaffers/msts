@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Add localhost to default url
+  config.action_mailer.default_url_options = { host: 'msts.herokuapp.com' }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
