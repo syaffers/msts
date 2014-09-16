@@ -19,6 +19,10 @@
 //= require_tree .
 
 $(document).ready( function() {
+	setTimeout(function () {
+		$("#notice").fadeOut(1000);
+	}, 2000)
+
 	$("#non_member_price-display").hide();
 
 	$("#ticket_event_id").bind('railsAutocomplete.select', function(event, data) {

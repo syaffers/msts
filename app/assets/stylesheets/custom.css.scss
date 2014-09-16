@@ -12,3 +12,12 @@
 .header-component {
 	margin-top: 20px;
 }
+
+#error_explanation {
+	@extend .alert;
+	@extend .alert-danger;
+	h2 {
+		font-size: 1em;
+		font-weight: bold;
+	}
+}
