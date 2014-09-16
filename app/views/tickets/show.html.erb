@@ -4,10 +4,10 @@
 			<div class="col-xs-6">
 				<h2>
 					<% if @ticket.member %>
-		            <span class="glyphicon glyphicon-credit-card glyphicon-member"></span>
-		            <% else %>
-		            <span class="glyphicon glyphicon-credit-card"></span>
-		            <% end %>
+					<span class="glyphicon glyphicon-credit-card glyphicon-member"></span>
+					<% else %>
+					<span class="glyphicon glyphicon-credit-card"></span>
+					<% end %>
 					Ticket
 					<%= "#{@ticket.event.code}#{@ticket.serial_number}" %>
 				</h2>
@@ -42,5 +42,13 @@
 			<%= @ticket.student.contact_number %> | 
 			<%= @ticket.student.email %>
 		</p>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-xs-12" id="attendance-toggle">
+				<%= render "button" %>
+			</div>
+		</div>
 	</div>
 </div>

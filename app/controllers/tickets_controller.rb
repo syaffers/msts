@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :destroy]
+  before_action :set_ticket, only: [:show, :destroy, :update]
   before_action :authenticate_admin!, only: [:new, :create, :destroy]
 
   # GET /tickets
@@ -36,6 +36,17 @@ class TicketsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @ticket.update(ticket_params)
+        format.html { redirect_to @ticket, notice: 'Status changed.' }
+        format.js {}
+      else
+        format.html { render :edit }
       end
     end
   end
@@ -78,6 +89,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:serial_number, :student_id, :event_id, :member)
+      params.require(:ticket).permit(:serial_number, :student_id, :event_id, :member, :attendance)
     end
 end
