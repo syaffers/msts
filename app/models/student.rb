@@ -14,6 +14,6 @@ class Student < ActiveRecord::Base
 
   	def self.search(search)
   		search_condition = "%" + search + "%"
-  		where('name LIKE ? OR student_id LIKE ? OR contact_number LIKE ? OR email LIKE ?', search_condition, search_condition, search_condition, search_condition)
+  		where('lower(name) LIKE ? OR student_id LIKE ? OR contact_number LIKE ? OR lower(email) LIKE ?', search_condition.downcase, search_condition, search_condition, search_condition.downcase)
   	end
 end
