@@ -50,4 +50,9 @@ $(document).ready( function() {
 			$("#non_member_price-display").show();
 		}
 	});
+
+	$("#clear-search-button").click( function() {
+		$("#search").val('');
+		$("#search-form").submit();
+	});
 })

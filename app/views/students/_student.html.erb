@@ -1,0 +1,19 @@
+<tr><td><strong><%= @students.empty? ? "No record found" : "" %></strong></td></tr>
+<% @students.each do |student| %>
+<tr>
+	<td><%= student.student_id %></td>
+	<td><%= student.name %></td>
+	<td><%= student.email %></td>
+	<td><%= student.contact_number %></td>
+	<td>
+		<% if student.member %>
+		<span class="glyphicon glyphicon-user glyphicon-member"></span>
+		<% else %>
+		<span class="glyphicon glyphicon-user"></span>
+		<% end %>
+	</td>
+	<td><%= link_to 'View Details', student %></td>
+	<td><%= link_to 'Edit Details', edit_student_path(student) %></td>
+	<!-- <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+</tr>
+<% end %>

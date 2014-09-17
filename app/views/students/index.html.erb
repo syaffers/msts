@@ -10,15 +10,18 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <%= form_tag(students_path, :method => "get", id: "search-form") do %>
-          <div class="input-group">
-            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search name, id, email, phone" %>
-            <span class="input-group-btn">
-              <%= button_tag "Search", :name => nil, class: 'btn btn-default' %>
-            </span>
-          </div>
-        <% end %>
+      <div class="col-xs-11 col-sm-6 col-md-4">
+      <%= form_tag(students_path, :remote => true, :method => "get", id: "search-form") do %>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search name, id, email, phone" %>
+          <span class="input-group-btn">
+            <%= button_tag "Search", :name => nil, class: 'btn btn-default' %>
+          </span>
+        </div>
+      </div>
+      <div class="col-xs-1 col-sm-1 col-md-1">
+      <%= button_tag "", :name => nil, class: 'btn btn-default glyphicon glyphicon-remove', id: "clear-search-button" %>
+      <% end %>
       </div>
     </div>
 
@@ -37,26 +40,8 @@
         </tr>
       </thead>
 
-      <tbody>
-        <% @students.each do |student| %>
-          <tr>
-            <td><%= student.student_id %></td>
-            <td><%= student.name %></td>
-            <td><%= student.email %></td>
-            <td><%= student.contact_number %></td>
-            <td>
-              <% if student.member %>
-                <span class="glyphicon glyphicon-user glyphicon-member"></span>
-              <% else %>
-                <span class="glyphicon glyphicon-user"></span>
-              <% end %>
-            </td>
-            <td><%= link_to 'View Details', student %></td>
-            <td><%= link_to 'Edit Details', edit_student_path(student) %></td>
-            <!--<td><%= link_to 'Edit', edit_student_path(student) %></td>
-            <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-          </tr>
-        <% end %>
+      <tbody id="students-table-body">
+        <%= render 'student' %>
       </tbody>
     </table>
     

@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
     if params[:search]
       @students = Student.search(params[:search])
     else
-      @students = Student.all
+      @students = Student.all    
     end
   end
 
