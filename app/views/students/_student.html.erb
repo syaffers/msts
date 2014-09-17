@@ -1,4 +1,4 @@
-<tr><td><strong><%= @students.empty? ? "No record found" : "" %></strong></td></tr>
+<%= @students.empty? ? "<tr><td><strong>No record found</strong><td><tr>".html_safe : "" %>
 <% @students.each do |student| %>
 <tr>
 	<td><%= student.student_id %></td>

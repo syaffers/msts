@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-3">
+    <div class="col-xs-12 col-sm-4">
       <div class="form-group">
         <%= f.label :student_id, "Student ID" %>
         <%= f.autocomplete_field :student_id, autocomplete_student_student_id_students_path, :id_element => '#s_id_field', class: "form-control" %>
         <%= f.hidden_field :student_id, id: "s_id_field" %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-3">
+    <div class="col-xs-12 col-sm-4">
       <div class="form-group">
         <%= f.label :serial_number, "Ticket Serial Number" %>
         <% if params[:sn].nil? %>
-          <%= f.text_field :serial_number, class: "form-control" %>
+          <%= f.text_field :serial_number, class: "form-control", autocomplete: "off" %>
         <% else %>
           <%= f.text_field :serial_number, :disabled => true, class: "form-control" %>
           <%= f.hidden_field :serial_number, value: params[:sn] %>
@@ -40,6 +40,14 @@
           <%= f.text_field :event_id, value: @event.code, :disabled => true, class: "form-control" %>
           <%= f.hidden_field :event_id, value: @event.id %>
         <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+      <div class="form-group">
+        <%= label_tag "ticket_qty", "Ticket Quantity" %>
+        <%= text_field_tag 'ticket_qty', nil,{ class: "form-control", autocomplete: "off", value: 1, min: 1 } %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-2">

@@ -20,9 +20,14 @@
 //= require_tree .
 
 $(document).ready( function() {
+	var mPrice = parseFloat($('#member_price-display').text());
+	var nmPrice = parseFloat($('#non_member_price-display').text());
+
 	setTimeout(function () {
 		$("#notice").fadeOut(1000);
 	}, 2000)
+
+	$("#ticket_qty").attr('type', 'number');
 
 	$("#non_member_price-display").hide();
 
@@ -30,6 +35,8 @@ $(document).ready( function() {
 		/* Do something here */
 		$("#member_price-display").text(parseFloat(data.item.member_price).toFixed(2));
 		$("#non_member_price-display").text(parseFloat(data.item.non_member_price).toFixed(2));
+		mPrice = parseFloat(data.item.member_price)
+		nmPrice = parseFloat(data.item.non_member_price)
 		if($("#ticket_member").is(":checked")) {
 			$("#member_price-display").show()
 			$("#non_member_price-display").hide();
@@ -48,6 +55,20 @@ $(document).ready( function() {
 		else {
 			$("#member_price-display").hide()
 			$("#non_member_price-display").show();
+		}
+	});
+
+	$("#ticket_qty").on( 'keyup, click', function() {
+		if( $(this).val() != '' ) {
+			$("#member_price-display").text( (mPrice * parseFloat($(this).val())).toFixed(2) );
+			$("#non_member_price-display").text( (nmPrice * parseFloat($(this).val())).toFixed(2) );
+		}
+		else {
+			$("#member_price-display").text( mPrice.toFixed(2) );
+			$("#non_member_price-display").text( nmPrice.toFixed(2) );
+		}
+		if( parseInt($(this).val()) < 1 || isNaN(parseInt($(this).val())) ) {
+			$(this).val("1");
 		}
 	});
 

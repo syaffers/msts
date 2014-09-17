@@ -28,13 +28,28 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
+    number = params[:ticket_qty].to_i
+    @tickets = Array.new
+    number.times do |n|
+      t = Ticket.new(ticket_params)
+      t.serial_number = t.serial_number.to_i + n 
+      @tickets.push(t)
+    end
+
+    ActiveRecord::Base.transaction do 
+      @save_results = @tickets.map &:save
+      raise ActiveRecord::Rollback unless @save_results.all? 
+    end
 
     respond_to do |format|
-      if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
-        format.json { render :show, status: :created, location: @ticket }
+      if @save_results.all? 
+        format.html { redirect_to tickets_path, notice: "#{number} #{"ticket".pluralize(number)} successfully created." }
+        format.json { render :show, status: :created, location: tickets_path }
       else
-        format.html { render :new }
+        format.html do
+          flash[:alert] = "Some ticket serials are already taken"
+          render :new
+        end
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
