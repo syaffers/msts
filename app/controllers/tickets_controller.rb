@@ -46,12 +46,18 @@ class TicketsController < ApplicationController
     respond_to do |format|
       if @save_results.all? 
         format.html { redirect_to tickets_path, notice: "#{number} #{"ticket".pluralize(number)} successfully created." }
+        format.js do 
+          flash[:notice] = "#{number} #{"ticket".pluralize(number)} successfully created."
+          flash.keep(:notice)
+          render :js => "window.location.replace('#{tickets_path}');"
+        end
         format.json { render :show, status: :created, location: tickets_path }
       else
         format.html do
           flash[:alert] = "Some ticket serial numbers are already taken: #{@serial_numbers.to_s}"
           render :new
         end
+        format.js {}
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
