@@ -58,7 +58,7 @@ $(document).ready( function() {
 		}
 	});
 
-	$("#ticket_qty").on( 'keyup, click', function() {
+	$("#ticket_qty").on( 'keyup click', function() {
 		if( $(this).val() != '' ) {
 			$("#member_price-display").text( (mPrice * parseFloat($(this).val())).toFixed(2) );
 			$("#non_member_price-display").text( (nmPrice * parseFloat($(this).val())).toFixed(2) );
