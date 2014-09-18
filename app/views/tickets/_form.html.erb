@@ -21,7 +21,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="form-group">
-        <%= f.label :serial_number, "Ticket Serial Number" %>
+        <%= f.label :serial_number, "Ticket (Initial) Serial Number" %>
         <% if params[:sn].nil? %>
           <%= f.text_field :serial_number, class: "form-control", autocomplete: "off" %>
         <% else %>

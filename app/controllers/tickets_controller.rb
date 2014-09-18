@@ -28,11 +28,13 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
+    @serial_numbers = []
     number = params[:ticket_qty].to_i
     @tickets = Array.new
     number.times do |n|
       t = Ticket.new(ticket_params)
-      t.serial_number = t.serial_number.to_i + n 
+      t.serial_number = t.serial_number.to_i + n
+      @serial_numbers.push(t.serial_number) unless t.valid?
       @tickets.push(t)
     end
 
@@ -47,7 +49,7 @@ class TicketsController < ApplicationController
         format.json { render :show, status: :created, location: tickets_path }
       else
         format.html do
-          flash[:alert] = "Some ticket serials are already taken"
+          flash[:alert] = "Some ticket serial numbers are already taken: #{@serial_numbers.to_s}"
           render :new
         end
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
