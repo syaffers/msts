@@ -24,7 +24,7 @@ $(document).ready( function() {
 	var nmPrice = parseFloat($('#non_member_price-display').text());
 
 	setTimeout(function () {
-		$("#notice").fadeOut(1000);
+		$("#notice").fadeOut(500);
 	}, 2000)
 
 	$("#ticket_qty").attr('type', 'number');
