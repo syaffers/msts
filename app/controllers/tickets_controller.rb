@@ -80,14 +80,16 @@ class TicketsController < ApplicationController
   end
 
   def qr
+    serial = params[:c].scan(/[A-Z]+|\d+/)[1].to_i
+
     correct_code = params[:c].scan(/[A-Z]+|\d+/)[0].eql? "MUS"
-    serial = params[:c].scan(/[A-Z]+|\d+/)[1]
+    correct_serial = serial < 150000 && serial > 139999
     if correct_code
       ticket = Ticket.find_by("serial_number = ?", serial)
     end
 
     respond_to do |format|
-      if !correct_code
+      if !correct_code || !correct_serial
         format.html { redirect_to tickets_path, notice: "Invalid QR code" }
       elsif ticket.nil?
         format.html { redirect_to(:controller => "tickets", :action => "new", :sn => serial)  }
