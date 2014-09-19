@@ -1,3 +1,10 @@
 <div class="alert alert-danger">
-	Some ticket serial numbers are already taken: <%= @serial_numbers.to_s %>
+	<% if @tickets.each.map(&:errors).map(&:any?).any? %>
+		<p>Some errors exist in the form:</p>
+		<ul>
+			<% @tickets.each.map(&:errors).map(&:full_messages).flatten.uniq.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
 </div>
