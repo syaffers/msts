@@ -20,5 +20,15 @@
 		  <strong>Non-member Price:</strong>
 		  RM <%= number_with_precision(@event.non_member_price, :precision => 2) %>
 		</p>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-xs-12" id="checkout-all">
+				<div id="attendace-table">
+				<%= render "checkout_all" %>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

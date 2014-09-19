@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :events do    
     get :autocomplete_event_name, :on => :collection
+    post 'checkout_all', to: "events#checkout_all", :on => :member
   end
 
   resources :tickets

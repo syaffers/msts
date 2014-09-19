@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :checkout_all]
   before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
   autocomplete :event, :name, :extra_data => [:member_price, :non_member_price], :full => true
 
@@ -60,6 +60,33 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def checkout_all
+    @tickets = @event.tickets
+    @tickets.each do |ticket|
+      ticket.attendance = false
+    end
+
+    ActiveRecord::Base.transaction do 
+      @save_results = @tickets.map &:save
+      raise ActiveRecord::Rollback unless @save_results.all? 
+    end
+
+    respond_to do |format|
+      if @save_results.all? 
+        format.html { redirect_to @event, notice: "#{@tickets.count} #{"ticket".pluralize(@tickets.count)} successfully checked out." }
+        format.js { flash[:notice] = "#{@tickets.count} #{"ticket".pluralize(@tickets.count)} successfully checked out." }
+        format.json { render :show, status: :created, location: tickets_path }
+      else
+        format.html do
+          flash[:alert] = "Error checking out tickets."
+          render :new
+        end
+        format.js { flash[:notice] = "Error checking out tickets." }
+        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+      end
     end
   end
 
