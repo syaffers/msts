@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :events do    
-    get :autocomplete_event_code, :on => :collection
+    get :autocomplete_event_name, :on => :collection
   end
 
   resources :tickets
