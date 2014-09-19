@@ -21,13 +21,8 @@
     <div class="col-xs-12 col-sm-4">
       <div class="form-group">
         <%= f.label :event_id, "Event Name" %>
-        <% if @event.nil? %>
-          <%= f.autocomplete_field :event_id, autocomplete_event_name_events_path, :update_elements => {:id => '#e_id_field'}, class: "form-control" %>
-          <%= f.hidden_field :event_id, id: "e_id_field" %>
-        <% else %>
-          <%= f.text_field :event_id, value: @event.name, :disabled => true, class: "form-control" %>
-          <%= f.hidden_field :event_id, value: @event.id %>
-        <% end %>
+        <%= f.autocomplete_field :event_id, autocomplete_event_name_events_path, :update_elements => {:id => '#e_id_field'}, class: "form-control" %>
+        <%= f.hidden_field :event_id, id: "e_id_field" %>
       </div>
     </div>
   </div>
