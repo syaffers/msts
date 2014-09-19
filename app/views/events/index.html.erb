@@ -13,7 +13,6 @@
       <thead>
         <tr>
           <th>Event Name</th>
-          <th>Event Code</th>
           <th>Member Price</th>
           <th>Non-member Price</th>
           <th></th>
@@ -26,7 +25,6 @@
         <% @events.each do |event| %>
           <tr>
             <td><%= event.name %></td>
-            <td><%= event.code %></td>
             <td>RM <%= number_with_precision(event.member_price, :precision => 2) %></td>
             <td>RM <%= number_with_precision(event.non_member_price, :precision => 2) %></td>
             <td><%= link_to 'View Details', event %></td>
