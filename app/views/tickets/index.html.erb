@@ -27,7 +27,7 @@
           <% else %>
           <tr>
           <% end %>
-            <td><%= "#{ticket.event.code}#{ticket.serial_number}" %></td>
+            <td><%= "MUS14#{ticket.serial_number}" %></td>
             <td><%= link_to "#{ticket.student.name} (#{ticket.student.student_id})", ticket.student %></td>
             <td><%= link_to ticket.event.name, ticket.event %></td>
             <td>

@@ -38,7 +38,7 @@
 			<ul>
 				<% @student.tickets.each do |t| %>
 				<li>
-					<%= link_to "#{t.event.code}#{t.serial_number}", t %> on 
+					<%= link_to "MUS14#{t.serial_number}", t %> on 
 					<%= t.created_at.to_date %>
 				</li>
 				<% end %>
