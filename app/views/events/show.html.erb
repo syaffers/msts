@@ -20,6 +20,10 @@
 		  <strong>Non-member Price:</strong>
 		  RM <%= number_with_precision(@event.non_member_price, :precision => 2) %>
 		</p>
+		<p>
+		  <strong>Serial Number Range</strong>
+		  <%= @event.starting_serial %> - <%= @event.ending_serial %>
+		</p>
 
 		<hr>
 

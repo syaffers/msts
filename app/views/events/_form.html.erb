@@ -20,13 +20,25 @@
             <%= f.text_field :name, class: "form-control" %>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-2">
+          <div class="form-group">
+            <%= f.label :starting_serial, "Starting Serial Number" %>
+            <%= f.text_field :starting_serial, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          <div class="form-group">
+            <%= f.label :ending_serial, "Ending Serial Number" %>
+            <%= f.text_field :ending_serial, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-2">
           <div class="form-group">
             <%= f.label :member_price %>
             <%= f.text_field :member_price, class: "form-control" %>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-2">
           <div class="form-group">
             <%= f.label :non_member_price %>
             <%= f.text_field :non_member_price, class: "form-control" %>
