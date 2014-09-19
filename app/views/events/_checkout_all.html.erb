@@ -1,14 +1,18 @@
 <% any_checked_in = @event.tickets.map(&:attendance?).any? %>
 <% if any_checked_in %>
 <table class="table table-striped">
-	<th>Ticket Serial Number</th>
+	<thead>
+		<th>Ticket Serial Number</th>
+	</thead>
+	<tbody>
 <% @event.tickets.each do |ticket| %>
 	<% if ticket.attendance %>
 	<tr>
-		<td>MUS14<%= ticket.serial_number %></td>
+		<td>MUS<%= ticket.serial_number %></td>
 	</tr>
 	<% end %>
 <% end %>
+	</tbody>
 <% else %>
 <p><strong>No tickets are checked in for <%= @event.name %></strong></p>
 <% end %>
