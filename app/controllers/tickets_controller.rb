@@ -31,6 +31,7 @@ class TicketsController < ApplicationController
     @tickets = Array.new
     number.times do |n|
       t = Ticket.new(ticket_params)
+      t.serial_number = t.serial_number.to_i + n
       @tickets.push(t)
     end
 
