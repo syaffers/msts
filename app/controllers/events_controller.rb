@@ -76,8 +76,12 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @save_results.all? 
-        format.html { redirect_to @event, notice: "#{@tickets.count} #{"ticket".pluralize(@tickets.count)} successfully checked out." }
-        format.js { flash[:notice] = "#{@tickets.count} #{"ticket".pluralize(@tickets.count)} successfully checked out." }
+        format.html { redirect_to @event, notice: "#All tickets successfully checked out of #{@event.name}." }
+        format.js do 
+          flash[:notice] = "All tickets successfully checked out of #{@event.name}."
+          flash.keep
+          render :js => "window.location.replace('#{tickets_path}');"
+        end
         format.json { render :show, status: :created, location: tickets_path }
       else
         format.html do
