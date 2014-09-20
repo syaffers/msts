@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Authentication gems
 gem 'devise'
+# Use range validator
+gem 'range_validator'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Use jquery turbolinks for jquery UI refresh problems

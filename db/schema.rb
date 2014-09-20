@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919164926) do
+ActiveRecord::Schema.define(version: 20140920110618) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(version: 20140919164926) do
   end
 
   create_table "tickets", force: true do |t|
-    t.string   "serial_number"
+    t.integer  "serial_number", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "student_id"
     t.integer  "event_id"
-    t.boolean  "member",        default: true
-    t.boolean  "attendance",    default: false
+    t.boolean  "member",                    default: true
+    t.boolean  "attendance",                default: false
   end
 
 end

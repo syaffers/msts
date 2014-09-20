@@ -1,4 +1,4 @@
-class AddTicketRangeToEvents < ActiveRecord::Migration
+class AddSerialNumberRangeToEvents < ActiveRecord::Migration
   def up
   	add_column :events, :starting_serial, :integer
   	add_column :events, :ending_serial, :integer
