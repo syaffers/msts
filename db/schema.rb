@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(version: 20140920110618) do
   end
 
   create_table "tickets", force: true do |t|
-    t.integer  "serial_number", limit: 255
+    t.integer  "serial_number"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "student_id"
     t.integer  "event_id"
-    t.boolean  "member",                    default: true
-    t.boolean  "attendance",                default: false
+    t.boolean  "member",        default: true
+    t.boolean  "attendance",    default: false
   end
 
 end
