@@ -4,9 +4,11 @@
       <div class="col-xs-6">
         <h2>All Events</h2>
       </div>
+      <% if can? :new, Event %>
       <div class="col-xs-6">
         <%= link_to 'Add Event', new_event_path, class: "btn btn-success pull-right header-component" %>
       </div>
+      <% end %>
     </div>
 
     <table class="table">
@@ -24,12 +26,12 @@
       <tbody>
         <% @events.each do |event| %>
           <tr>
-            <td><%= link_to event.name, event %></td>
+            <td><%= can?(:show, Event) ? link_to(event.name, event) : event.name %></td>
             <td>RM <%= number_with_precision(event.member_price, :precision => 2) %></td>
             <td>RM <%= number_with_precision(event.non_member_price, :precision => 2) %></td>
             <td><%= event.starting_serial %> - <%= event.ending_serial %></td>
-            <td><%= link_to 'Edit Details', edit_event_path(event) %></td>
-            <td><%= link_to 'Delete Event', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Edit Details', edit_event_path(event) if can? :edit, Event %></td>
+            <td><%= link_to 'Delete Event', event, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Event %></td>
           </tr>
         <% end %>
       </tbody>
