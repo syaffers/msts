@@ -1,0 +1,56 @@
+<div class="row">
+  	<div class="col-xs-12">
+  		<div class="row">
+			<div class="col-xs-6">
+				<h2>Edit Admin</h2>
+			</div>
+			<div class="col-xs-6">
+				<%= link_to '&larr; Cancel'.html_safe, admins_path, class: "btn btn-danger pull-right header-component" %>
+			</div>
+		</div>
+
+		<%= form_for(@admin) do |f| %>
+		<% if @admin.errors.any? %>
+		<div id="error_explanation" class="alert alert-danger">
+			<p><%= pluralize(@admin.errors.count, "error") %> prohibited this admin from being saved:</p>
+
+			<ul>
+				<% @admin.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="form-group">
+					<%= f.label :email %>
+					<%= f.text_field :email, class: "form-control", autofocus: true, autocomplete: "off" %>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="form-group">
+				<%= f.label :password, "New Password" %> <i>(8 characters minimum)</i>
+					<%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="form-group">
+					<%= f.label :password_confirmation %>
+					<%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="form-group">
+					<%= f.label :current_password %>
+					<%= f.password_field :current_password, class: "form-control", autocomplete: "off" %>
+				</div>
+			</div>
+		</div>
+		<div class="actions">
+			<%= f.submit class: "btn btn-primary" %>
+		</div>
+		<% end %>
+	</div>
+</div>

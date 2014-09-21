@@ -48,7 +48,7 @@
 				<% end %>
 				<ul class="nav navbar-nav navbar-right">
 					<% if admin_signed_in? %>
-						<li><%= link_to current_admin.email, edit_admin_registration_path %></li>
+						<li><%= link_to("Admin Dashboard", admins_path) if can? :manage, Admin %></li>
 						<li><%= link_to "Sign Out", destroy_admin_session_path, :method => :delete %></li>
 					<% else %>
 						<li><%= link_to "Sign In", new_admin_session_path %></li>

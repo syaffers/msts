@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-6">
+        <h2>All Admins</h2>
+      </div>
+      <div class="col-xs-6">
+        <%= link_to 'Add Admin', new_admin_path, class: "btn btn-success pull-right header-component" %>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Admin E-Mail</th>
+          <th>Admin Roles</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @admins.each do |admin| %>
+          <tr>
+            <td><%= admin.email %></td>
+            <td><%= admin.roles.entries[0].to_s.humanize %></td>
+            <td><%= link_to 'Edit Admin Roles', edit_roles_admin_path(admin) %></td>
+            <td><%= link_to 'Edit Admin Details', edit_admin_path(admin) %></td>
+            <td><%= link_to 'Delete Admin', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

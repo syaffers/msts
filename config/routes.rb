@@ -17,6 +17,13 @@ Rails.application.routes.draw do
     post 'checkout_all', to: "events#checkout_all", :on => :member
   end
 
+  resources :admins do
+    get 'edit_roles', to: "admins#edit_roles", :on => :member
+    patch 'update_roles', to: "admins#update_roles", :on => :member
+  end
+
+  resources :admins, :except => [:show]
+
   resources :tickets
 
   resources :students
