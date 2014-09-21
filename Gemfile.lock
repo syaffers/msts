@@ -32,6 +32,7 @@ GEM
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.2)
+    cancancan (1.9.2)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -101,6 +102,7 @@ GEM
       activesupport (>= 3.0.0)
     rdoc (4.1.2)
       json (~> 1.4)
+    role_model (0.8.1)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -142,6 +144,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.2.0.2)
+  cancancan (~> 1.9)
   coffee-rails (~> 4.0.0)
   devise
   jbuilder (~> 2.0)
@@ -153,6 +156,7 @@ DEPENDENCIES
   rails4-autocomplete
   rails_12factor (= 0.0.2)
   range_validator
+  role_model
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring

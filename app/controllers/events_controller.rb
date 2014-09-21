@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :checkout_all]
-  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+  load_and_authorize_resource
   autocomplete :event, :name, :extra_data => [:member_price, :non_member_price], :full => true
 
   # GET /events

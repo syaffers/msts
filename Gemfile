@@ -15,6 +15,10 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Authentication gems
 gem 'devise'
+# Use CanCan for authorization library
+gem 'cancancan', '~> 1.9'
+# Use Role Model for authenticating user roles
+gem 'role_model' 
 # Use range validator
 gem 'range_validator'
 # Use jquery as the JavaScript library

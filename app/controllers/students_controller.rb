@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:new, :create, :destroy, :edit, :update]
+  load_and_authorize_resource
   autocomplete :student, :student_id, :extra_data => [:name], :display_value => :display_ac, :full => true
 
   # GET /students

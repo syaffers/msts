@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :destroy, :update]
-  before_action :authenticate_admin!, only: [:new, :create, :destroy]
+  load_and_authorize_resource
 
   # GET /tickets
   # GET /tickets.json
