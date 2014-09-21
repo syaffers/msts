@@ -30,8 +30,8 @@
             <td>RM <%= number_with_precision(event.member_price, :precision => 2) %></td>
             <td>RM <%= number_with_precision(event.non_member_price, :precision => 2) %></td>
             <td><%= event.starting_serial %> - <%= event.ending_serial %></td>
-            <td><%= link_to 'Edit Details', edit_event_path(event) if can? :edit, Event %></td>
-            <td><%= link_to 'Delete Event', event, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Event %></td>
+            <td><%= link_to 'Edit Details', edit_event_path(event), class: "btn btn-warning btn-xs" if can? :edit, Event %></td>
+            <td><%= link_to 'Delete Event', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" if can? :destroy, Event %></td>
           </tr>
         <% end %>
       </tbody>
