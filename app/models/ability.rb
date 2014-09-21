@@ -14,7 +14,7 @@ class Ability
                 cannot :checkout_all, Event
             elsif admin.has_role? :gatekeeper
                 can :manage, [Student, Ticket]
-                can [:index], Event
+                can [:index, :autocomplete_event_name], Event
             end
         end
         #
