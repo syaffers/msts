@@ -13,8 +13,7 @@
       <thead>
         <tr>
           <th>Admin E-Mail</th>
-          <th>Admin Roles</th>
-          <th></th>
+          <th>Admin Role</th>
           <th></th>
           <th></th>
         </tr>
@@ -24,8 +23,12 @@
         <% @admins.each do |admin| %>
           <tr>
             <td><%= admin.email %></td>
-            <td><%= admin.roles.entries[0].to_s.humanize %></td>
-            <td><%= link_to 'Edit Admin Roles', edit_roles_admin_path(admin) %></td>
+            <td>
+              <%= form_for(admin, url: update_roles_admin_path(admin)) do |f| %>
+                <%= select_tag "roles_mask", options_for_select([["Super Admin", 1], ["Admin", 2], ["Gatekeeper", 4]], admin.roles_mask), class: "role-selector" %>
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+              <% end %>
+            </td>
             <td><%= link_to 'Edit Admin Details', edit_admin_path(admin), class: "btn btn-xs btn-warning" %></td>
             <td><%= link_to 'Delete Admin', admin, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
           </tr>

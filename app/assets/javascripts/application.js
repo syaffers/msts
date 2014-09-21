@@ -76,4 +76,8 @@ $(document).ready( function() {
 		$("#search").val('');
 		$("#search-form").submit();
 	});
+
+	$(".role-selector").on('change', function() {
+		this.form.submit();
+	});
 })

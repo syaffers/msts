@@ -43,10 +43,10 @@ class AdminsController < ApplicationController
 
   # PATCH/PUT admins/1
   def update_roles
+    @admin.roles_mask = params[:roles_mask]
     respond_to do |format|
-      if @admin.update(admin_params)
+      if @admin.save
         format.html { redirect_to admins_path, notice: 'Role changed.' }
-        format.js {}
       else
         format.html { render 'edit_roles' }
       end
