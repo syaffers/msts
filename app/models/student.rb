@@ -16,6 +16,6 @@ class Student < ActiveRecord::Base
   		search_condition = "%" + search + "%"
   		where('lower(name) LIKE ? OR student_id LIKE ? OR contact_number LIKE ? OR lower(email) LIKE ?', search_condition.downcase, search_condition, search_condition, search_condition.downcase)
   	end
-
+  	
   	self.per_page = 10;
 end
