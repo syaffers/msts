@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-xs-12">
     <div class="row">
@@ -13,9 +14,9 @@
       <div class="col-xs-11 col-sm-6 col-md-4">
       <%= form_tag(students_path, :remote => true, :method => "get", id: "search-form") do %>
         <div class="input-group">
-          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search name, id, email, phone", autocomplete: "off" %>
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search name, id, email, phone", autocomplete: "off", id: "student-search-box" %>
           <span class="input-group-btn">
-            <%= button_tag "Search", :name => nil, class: 'btn btn-default' %>
+            <%= button_tag "Search", :name => nil, class: 'btn btn-default', id: 'student-search-btn' %>
           </span>
         </div>
       </div>
@@ -25,7 +26,7 @@
       </div>
     </div>
 
-    <br>
+    <%= will_paginate @students, renderer: BootstrapPagination::Rails %>
 
     <table class="table">
       <thead>

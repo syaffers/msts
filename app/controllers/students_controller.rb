@@ -7,9 +7,9 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     if params[:search]
-      @students = Student.search(params[:search])
+      @students = Student.search(params[:search]).order(:student_id)
     else
-      @students = Student.all    
+      @students = Student.all.order(:student_id).paginate(:page => params[:page]) 
     end
   end
 

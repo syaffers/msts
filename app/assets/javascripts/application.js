@@ -72,8 +72,17 @@ $(document).ready( function() {
 		}
 	});
 
+	$('#student-search-btn').click(function () {
+		if($('#student-search-box').val() != "") {
+			$('#student-search-btn').css("margin-bottom", "20px");
+			$(".pagination").hide();
+		}
+	})
+
 	$("#clear-search-button").click( function() {
-		$("#search").val('');
+		$("#student-search-box").val('');
+		$("#student-search-btn").removeAttr("style");
+		$(".pagination").show();
 		$("#search-form").submit();
 	});
 
