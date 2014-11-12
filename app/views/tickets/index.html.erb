@@ -1,47 +1,43 @@
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="row">
-        <div class="col-xs-6">
-          <h2>All Tickets</h2>
-        </div>
-        <div class="col-xs-6">
-          <%= link_to 'New Ticket', new_ticket_path, class: "btn btn-success pull-right header-component" %>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-6">
+        <h2>All Tickets</h2>
+      </div>
+      <div class="col-xs-6">
+        <%= link_to 'New Ticket', new_ticket_path, class: "btn btn-success pull-right header-component" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-11 col-sm-6 col-md-4">
+        <%= form_tag(tickets_path, :remote => true, :method => "get", id: "search-form") do %>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Student ID (e.g. 001234)", autocomplete: "off", id: "ticket-search-box" %>
+          <span class="input-group-btn">
+            <%= button_tag "Search", :name => nil, class: 'btn btn-default', id: 'ticket-search-btn' %>
+          </span>
         </div>
       </div>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Serial number</th>
-            <th>Buyer Details</th>
-            <th>Event Name</th>
-            <th>Member Ticket?</th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @tickets.each do |ticket| %>
-          <% if ticket.attendance %>
-           <tr class="attending">
-          <% else %>
-          <tr>
-          <% end %>
-            <td><%= "MUS#{ticket.serial_number}" %></td>
-            <td><%= link_to "#{ticket.student.name} (#{ticket.student.student_id})", ticket.student %></td>
-            <td><%= can?(:show, Event) ? (link_to ticket.event.name, ticket.event) : ticket.event.name %></td>
-            <td>
-            <% if ticket.member %>
-              <span class="glyphicon glyphicon-credit-card glyphicon-member"></span>
-            <% else %>
-              <span class="glyphicon glyphicon-credit-card"></span>
-            <% end %>
-            </td>
-            <td><%= link_to 'View Details', ticket, class: 'btn btn-primary btn-xs' %></td>
-            <!--<td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-            <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-          </tr>
+      <div class="col-xs-1 col-sm-1 col-md-1">
+        <%= button_tag "", :name => nil, class: 'btn btn-default glyphicon glyphicon-remove', id: "clear-search-button" %>
         <% end %>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Serial number</th>
+          <th>Student Details</th>
+          <th>Event Name</th>
+          <th>Member Ticket?</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody id="tickets-table-body">
+        <%= render 'ticket' %>
       </tbody>
     </table>
   </div>

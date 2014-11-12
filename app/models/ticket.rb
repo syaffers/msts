@@ -15,4 +15,13 @@ class Ticket < ActiveRecord::Base
 			errors.add(:serial_number, "must be within event serial number range")
 		end
 	end
+
+	def self.search(search)
+		if !search.empty?
+			search = Student.find_by(student_id: search)
+			where("student_id LIKE '%" + search.id.to_s + "%'")
+		else
+			all
+		end
+  	end
 end

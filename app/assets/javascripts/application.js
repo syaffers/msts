@@ -77,11 +77,16 @@ $(document).ready( function() {
 			$('#student-search-btn').css("margin-bottom", "20px");
 			$(".pagination").hide();
 		}
-	})
+	});
 
 	$("#clear-search-button").click( function() {
 		$("#student-search-box").val('');
 		$("#student-search-btn").removeAttr("style");
+		$(".pagination").show();
+		$("#search-form").submit();
+
+		$("#ticket-search-box").val('');
+		$("#ticket-search-btn").removeAttr("style");
 		$(".pagination").show();
 		$("#search-form").submit();
 	});

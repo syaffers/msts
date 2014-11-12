@@ -5,7 +5,11 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    if params[:search]
+      @tickets = Ticket.search(params[:search])
+    else
+      @tickets = Ticket.all.order(:student_id).paginate(:page => params[:page]) 
+    end
   end
 
   # GET /tickets/1

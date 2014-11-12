@@ -1,0 +1,22 @@
+<%= @tickets.empty? ? "<tr><td><strong>No record found</strong><td><tr>".html_safe : "" %>
+<% @tickets.each do |ticket| %>
+	<% if ticket.attendance %>
+		<tr class="attending">
+	<% else %>
+		<tr>
+	<% end %>
+	<td><%= "MUS#{ticket.serial_number}" %></td>
+	<td><%= link_to "#{ticket.student.name} (#{ticket.student.student_id})", ticket.student %></td>
+	<td><%= can?(:show, Event) ? (link_to ticket.event.name, ticket.event) : ticket.event.name %></td>
+	<td>
+		<% if ticket.member %>
+		<span class="glyphicon glyphicon-credit-card glyphicon-member"></span>
+		<% else %>
+		<span class="glyphicon glyphicon-credit-card"></span>
+		<% end %>
+	</td>
+	<td><%= link_to 'View Details', ticket, class: 'btn btn-primary btn-xs' %></td>
+	<!--<td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+		<td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+	</tr>
+<% end %>
