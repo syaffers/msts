@@ -67,14 +67,18 @@ $(document).ready( function() {
 			$("#member_price-display").text( mPrice.toFixed(2) );
 			$("#non_member_price-display").text( nmPrice.toFixed(2) );
 		}
-		if( parseInt($(this).val()) < 1 || isNaN(parseInt($(this).val())) ) {
-			$(this).val("1");
-		}
 	});
 
 	$('#student-search-btn').click(function () {
 		if($('#student-search-box').val() != "") {
 			$('#student-search-btn').css("margin-bottom", "20px");
+			$(".pagination").hide();
+		}
+	});
+
+	$('#ticket-search-btn').click(function () {
+		if($('#ticket-search-box').val() != "") {
+			$('#ticket-search-btn').css("margin-bottom", "20px");
 			$(".pagination").hide();
 		}
 	});

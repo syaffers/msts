@@ -11,7 +11,7 @@
       <div class="form-group">
         <%= f.label :serial_number, "Ticket (Initial) Serial Number" %>
         <% if params[:sn].nil? %>
-          <%= f.text_field :serial_number, class: "form-control", autocomplete: "off" %>
+          <%= f.text_field :serial_number, class: "form-control", autocomplete: "off", type: "number" %>
         <% else %>
           <%= f.text_field :serial_number, :disabled => true, class: "form-control" %>
           <%= f.hidden_field :serial_number, value: params[:sn] %>

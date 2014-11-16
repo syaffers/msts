@@ -1,4 +1,6 @@
 class Ticket < ActiveRecord::Base
+	attr_accessor :ticket_qty
+
 	belongs_to :student
 	belongs_to :event
 
@@ -19,7 +21,9 @@ class Ticket < ActiveRecord::Base
 	def self.search(search)
 		if !search.empty?
 			search = Student.find_by(student_id: search)
-			where("student_id LIKE '%" + search.id.to_s + "%'")
+			if !search.nil?
+				where("student_id LIKE '%" + search.id.to_s + "%'")
+			end
 		else
 			all
 		end
