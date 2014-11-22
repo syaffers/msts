@@ -12,6 +12,13 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = EventPdf.new(@event) 
+        send_data pdf.render, :filename => "#{@event.name.split(' ').join('_')}_Report.pdf", :type => "application/pdf", :disposition => "inline" 
+      end
+    end
   end
 
   # GET /events/new

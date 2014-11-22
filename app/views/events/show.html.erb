@@ -25,6 +25,8 @@
 		  <%= @event.starting_serial %> - <%= @event.ending_serial %>
 		</p>
 
+		<p><strong><%= link_to "Event Report (PDF)", event_path(@event, format: :pdf), target: "_blank" %></strong></p>
+
 		<hr>
 
 		<div class="row">
