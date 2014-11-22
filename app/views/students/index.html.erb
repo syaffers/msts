@@ -25,7 +25,11 @@
       </div>
     </div>
 
-    <%= will_paginate @students, renderer: BootstrapPagination::Rails %>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <%= will_paginate @students, renderer: BootstrapPagination::Rails, inner_window: 1 %>
+      </div>
+    </div>
 
     <table class="table">
       <thead>

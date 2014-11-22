@@ -28,4 +28,6 @@ class Ticket < ActiveRecord::Base
 			all
 		end
   	end
+
+  	self.per_page = 10
 end
