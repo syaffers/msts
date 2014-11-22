@@ -35,6 +35,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # pagination gem
 gem 'will_paginate-bootstrap'
+# pdf generation gem
+gem 'prawn'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
